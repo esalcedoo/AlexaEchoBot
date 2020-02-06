@@ -1,3 +1,4 @@
+﻿using Bot.Builder.Community.Adapters.Alexa;
 using Bot.Builder.Community.Adapters.Alexa.Integration.AspNet.Core;
 using Bot.Builder.Community.Adapters.Alexa.Middleware;
 using AlexaEchoBot.Bots;
@@ -19,14 +20,20 @@ namespace Microsoft.Extensions.DependencyInjection
 
             services.TryAddSingleton<IAlexaHttpAdapter>(_ =>
             {
-                var alexaHttpAdapter = new AlexaHttpAdapter(validateRequests: true)
+                AlexaAdapterOptions alexaAdapterOptions = new AlexaAdapterOptions()
+                {
+                    MultipleOutgoingActivitiesPolicy = MultipleOutgoingActivitiesPolicies.ConcatenateTextSpeakPropertiesFromAllActivities,
+                    ShouldEndSessionByDefault = false,
+                    ValidateIncomingAlexaRequests = true,
+                    TryConvertFirstActivityAttachmentToAlexaCard = false
+                };
+
+                var alexaHttpAdapter = new AlexaHttpAdapter(alexaAdapterOptions)
                 {
                     OnTurnError = async (context, exception) =>
                     {
                         await context.SendActivityAsync("<say-as interpret-as=\"interjection\">boom</say-as>, explotó.");
-                    },
-                    ShouldEndSessionByDefault = false,
-                    ConvertBotBuilderCardsToAlexaCards = false,
+                    }
                 };
                 alexaHttpAdapter.Use(new AlexaIntentRequestToMessageActivityMiddleware(transformPattern: RequestTransformPatterns.MessageActivityTextFromSinglePhraseSlotValue));
                 return alexaHttpAdapter;

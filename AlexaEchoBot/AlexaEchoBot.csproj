@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Bot.Builder.Community.Adapters.Alexa" Version="4.6.4" />
-    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.6.3" />
+    <PackageReference Include="Bot.Builder.Community.Adapters.Alexa" Version="4.6.4-beta0036" />
+    <PackageReference Include="Microsoft.Bot.Builder.Integration.AspNet.Core" Version="4.7.2" />
   </ItemGroup>
 
     <ItemGroup>
