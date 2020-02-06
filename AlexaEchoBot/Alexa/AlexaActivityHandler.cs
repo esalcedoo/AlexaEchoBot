@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EchoBotHumanLearning.Alexa
+namespace AlexaEchoBot.Alexa
 {
     public class AlexaActivityHandler : ActivityHandler
     {

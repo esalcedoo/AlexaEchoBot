@@ -4,7 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
 
-namespace EchoBotHumanLearning.Bots
+namespace AlexaEchoBot.Bots
 {
     public class Bot : ActivityHandler
     {

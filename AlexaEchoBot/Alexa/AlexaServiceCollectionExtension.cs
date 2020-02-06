@@ -1,6 +1,6 @@
-﻿using Bot.Builder.Community.Adapters.Alexa.Integration.AspNet.Core;
+using Bot.Builder.Community.Adapters.Alexa.Integration.AspNet.Core;
 using Bot.Builder.Community.Adapters.Alexa.Middleware;
-using EchoBotHumanLearning.Bots;
+using AlexaEchoBot.Bots;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 using System;

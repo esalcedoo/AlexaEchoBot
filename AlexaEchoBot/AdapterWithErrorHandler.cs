@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace EchoBotHumanLearning
+namespace AlexaEchoBot
 {
     public class AdapterWithErrorHandler : BotFrameworkHttpAdapter
     {

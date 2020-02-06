@@ -1,13 +1,11 @@
-﻿using EchoBotHumanLearning.Alexa;
+﻿using AlexaEchoBot.Alexa;
 using Microsoft.Bot.Builder;
 using Microsoft.Bot.Schema;
-using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace EchoBotHumanLearning.Bots
+namespace AlexaEchoBot.Bots
 {
     public class AlexaBot : AlexaActivityHandler
     {

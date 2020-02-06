@@ -1,5 +1,5 @@
 ﻿using Bot.Builder.Community.Adapters.Alexa.Integration.AspNet.Core;
-using EchoBotHumanLearning.Bots;
+using AlexaEchoBot.Bots;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Bot.Builder;
@@ -8,7 +8,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 
-namespace EchoBotHumanLearning
+namespace AlexaEchoBot
 {
     public class Startup
     {
