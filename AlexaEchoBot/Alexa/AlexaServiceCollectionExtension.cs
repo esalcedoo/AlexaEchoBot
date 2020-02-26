@@ -2,12 +2,9 @@
 using Bot.Builder.Community.Adapters.Alexa.Integration.AspNet.Core;
 using Bot.Builder.Community.Adapters.Alexa.Middleware;
 using AlexaEchoBot.Bots;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.DependencyInjection.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+using AlexaEchoBot.Alexa;
+using Microsoft.Bot.Builder;
 
 namespace Microsoft.Extensions.DependencyInjection
 {
@@ -17,7 +14,6 @@ namespace Microsoft.Extensions.DependencyInjection
         {
             // Create the Alexa bot as a transient. In this case the ASP Controller is expecting an IBot.
             services.TryAddTransient<AlexaBot>();
-
             services.TryAddSingleton<IAlexaHttpAdapter>(_ =>
             {
                 AlexaAdapterOptions alexaAdapterOptions = new AlexaAdapterOptions()
@@ -32,7 +28,7 @@ namespace Microsoft.Extensions.DependencyInjection
                 {
                     OnTurnError = async (context, exception) =>
                     {
-                        await context.SendActivityAsync("<say-as interpret-as=\"interjection\">boom</say-as>, explotó.");
+                        await context.SendActivityAsync(MessageFactory.Text("💥 explotó.", "<say-as interpret-as=\"interjection\">boom</say-as>, explotó."));
                     }
                 };
                 alexaHttpAdapter.Use(new AlexaIntentRequestToMessageActivityMiddleware(transformPattern: RequestTransformPatterns.MessageActivityTextFromSinglePhraseSlotValue));

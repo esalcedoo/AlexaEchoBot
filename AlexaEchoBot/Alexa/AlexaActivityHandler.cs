@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace AlexaEchoBot.Alexa
 {
-    public class AlexaActivityHandler : ActivityHandler
+    public abstract class AlexaActivityHandler : ActivityHandler
     {
         public override Task OnTurnAsync(ITurnContext turnContext, CancellationToken cancellationToken = default)
         {
@@ -22,11 +22,16 @@ namespace AlexaEchoBot.Alexa
                     return OnUnrecognizedActivityTypeAsync(turnContext, cancellationToken);
                 case AlexaRequestType.SessionEndedRequest:
                     return OnMembersRemovedAsync(
-                        turnContext.Activity.MembersRemoved, new DelegatingTurnContext<IConversationUpdateActivity>(turnContext), cancellationToken);
+                        turnContext.Activity.MembersRemoved,
+                        new DelegatingTurnContext<IConversationUpdateActivity>(turnContext), cancellationToken);
+                case AlexaRequestType.AccountLinkSkillEventRequest:
+                    return OnMembersLinked(turnContext, cancellationToken);
                 default:
                     break;
             }
             return base.OnTurnAsync(turnContext, cancellationToken);
         }
+
+        protected abstract Task OnMembersLinked(ITurnContext turnContext, CancellationToken cancellationToken);
     }
 }

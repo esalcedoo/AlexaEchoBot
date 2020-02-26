@@ -28,7 +28,8 @@ namespace AlexaEchoBot
             // Create the bot as a transient. In this case the ASP Controller is expecting an IBot.
             services.AddTransient<IBot, Bots.Bot>();
 
-            services.AddAlexa();
+            services.AddAlexa()
+                    .AddIntents();
 
             services.Configure<IISServerOptions>(options =>
             {
